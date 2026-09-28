@@ -25,7 +25,7 @@ const BlogCard = ({ blog }) => {
                 <Badge className="bg-indigo-100 text-indigo-700">{blog.category}</Badge>
                 <CardTitle className="text-xl hover:text-indigo-600 transition line-clamp-1 font-bold">{blog.title}</CardTitle>
             </CardHeader>
-            <CardContent className="text-sm line-clamp-3 text-gray-500">
+            <CardContent className="text-sm line-clamp-3">
               <p>{blog.content}</p>
 
             </CardContent>

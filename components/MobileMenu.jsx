@@ -3,9 +3,16 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Navlink from "./Navlink";
+import ModeToggle from "./ModeToggle";
+import Logout from "./Logout";
+import { authClient } from "@/lib/auth-client";
+
 
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+   const {
+    data: session,
+  } = authClient.useSession();
 
   return (
     <div className="lg:hidden">
@@ -46,11 +53,16 @@ const MobileMenu = () => {
             </li>
 
             <li>
-              Login
+            {
+                session?(
+                   <Logout/>
+                ):
+                <Navlink href="/auth/login">Login</Navlink>
+              }
             </li>
 
             <li>
-              Dark
+              <ModeToggle/>
             </li>
 
           </ul>
