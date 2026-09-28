@@ -7,7 +7,7 @@ export default async function AdminLayout({ children }) {
         headers: await headers(),
       });
         if (!session?.user) {
-          redirect("/login");
+          redirect("/auth/login");
         }
   return  <>{children}</>
 }
