@@ -1,7 +1,6 @@
 import connectDB from "@/lib/mongodb";
 import Blog from "@/models/Blogs";
 
-
 export async function GET(request,{params}){
     // console.log(params)
     // console.log(params.slug)
@@ -11,10 +10,8 @@ export async function GET(request,{params}){
         const blog = await Blog.findOne({
             slug
         })
-
         return Response.json(blog)
-
-        
+     
     } catch (error) {
         return Response.json({
             message:error.message

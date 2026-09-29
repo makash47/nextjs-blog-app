@@ -5,9 +5,9 @@ export async function DELETE(request,{params}){
     try {
         await connectDB();
         const {id} = await params;
-        const deletedBlogs = await Blog.findByIdAndDelete(id)
+        const deletedBlog = await Blog.findByIdAndDelete(id)
 
-        if(!deletedBlogs){
+        if(!deletedBlog){
             return Response.json(
                 {message:"Blog Not Found"},
                 {status:404}
