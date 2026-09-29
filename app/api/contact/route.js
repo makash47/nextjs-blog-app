@@ -9,7 +9,7 @@ export async function POST(request){
         const contact = await Contact.create(data)
 
         return Response.json(
-            {message:"Message Sent Succcesfully",contact},
+            {message:"Message Sent Successfully",contact},
             {status:201}
 
         )

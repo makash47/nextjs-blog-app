@@ -5,22 +5,16 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import Blog from "@/models/Blogs";
 import connectDB from "@/lib/mongodb";
+import EditBlogDialogue from "@/components/EditBlogDialogue";
 
 export default async function AdminPage() {
  
   const session = await auth.api.getSession({
     headers: await headers(),
   });
-  // // console.log(session)
-
-  // if (!session?.user) {
-  //   redirect("/login");
-  // }
-
-  await connectDB();
-
+  
+  await connectDB()
   let blogs;
-
   if (session.user.role === "admin") {
     blogs = await Blog.find();
   } else {
@@ -28,6 +22,7 @@ export default async function AdminPage() {
       authorId: session.user.id,
     }).sort({ createdAt: -1 });
   }
+  blogs = JSON.parse(JSON.stringify(blogs));
   return (
     <>
     <div className="w-full py-10">
@@ -50,7 +45,8 @@ export default async function AdminPage() {
                   <h2 className="text-sm">{blog.category}</h2>
                 </div>
                 <div className="flex gap-3">
-                  {/* <button>Edit</button> */}
+                  <EditBlogDialogue blog={blog}/>
+                 
                   <DeleteButton id={blog._id.toString()}/>
                 </div>
 

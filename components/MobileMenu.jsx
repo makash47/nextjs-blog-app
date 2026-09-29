@@ -7,7 +7,6 @@ import ModeToggle from "./ModeToggle";
 import Logout from "./Logout";
 import { authClient } from "@/lib/auth-client";
 
-
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
    const {
