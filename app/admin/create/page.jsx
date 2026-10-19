@@ -25,28 +25,7 @@ const CreateBlogPage = () => {
    })
    }
 
-//  async function handleFormSubmit(e){
-//         e.preventDefault();
-//         try {
-//             setIsLoading(true);
-//             const response = await fetch("/api/blogs",{
-//             method:"POST",
-//             headers:{
-//                 "Content-Type":"application/json"
-//             },
-//             body:JSON.stringify(formData)
-//         })
-//         toast.success("Post Created Successfully")
-//          router.push("/admin")
-            
-//         } catch (error) {
-//             console.log(error)
-//         }
 
-//         finally{
-//             setIsLoading(false)
-//         }
-//     }
 async function handleFormSubmit(e) {
   e.preventDefault();
 
@@ -136,7 +115,7 @@ async function handleFormSubmit(e) {
             onChange={handleChange}/>
 
             <button className="bg-indigo-600 text-white px-2 py-1 rounded-sm text-lg">{
-                isLoading?"Publishing":"Publishh"}</button>
+                isLoading?"Publishing":"Publish"}</button>
         </form>
     </div>
     </>

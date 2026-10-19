@@ -17,7 +17,6 @@ export async function generateMetadata({params}){
             },
         };  
     }
-   
       const title = blog.title||"Blogify";
       const description = blog.excerpt||blog.description.slice(0,150)||"Blogify, explore blogs";
       const canonicalUrl = `/blogs/${slug}`
@@ -55,10 +54,27 @@ export default async function BlogPage({ params }) {
     const blog = await getBlogBySlug(slug)
 
     if (!blog) return <h1>Not found log</h1>
+    const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog POST',
+    headline: blog.title,
+    description: blog.excerpt,
+    image: blog.image,
+    datePublished: blog.createdAt,
+    dateModified: blog.updatedAt,
+    author: {
+      '@type': 'Person',
+      name: blog.author || 'Blogify Team',
+    },
+  };
 
     return (
         <>
             <article className="w-full">
+                <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
                 <div className="max-w-4xl mx-auto px-6 py-10">
                     <Badge className="text-indigo-700 bg-indigo-100">
                         {blog.category}

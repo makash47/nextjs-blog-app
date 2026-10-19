@@ -23,7 +23,7 @@ export async function Categories() {
     </section>
     )
 }
-// export default Categories
+
 
 
 
