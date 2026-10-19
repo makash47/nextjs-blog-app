@@ -2,6 +2,7 @@ import BlogCard from "@/components/BlogCard";
 import { getBlogsByCategory } from "@/lib/data";
 
 
+
 export default async function CategoryPage({ params }) {
   const { category } = await params;
   const decodedCategory = decodeURIComponent(category);

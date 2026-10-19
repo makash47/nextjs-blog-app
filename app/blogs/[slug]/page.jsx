@@ -1,14 +1,60 @@
 import { Badge } from "@/components/ui/badge";
 import { getBlogBySlug } from "@/lib/data";
 import Image from "next/image";
-
 import ReactMarkDown from "react-markdown"
+
+export async function generateMetadata({params}){
+    const {slug} = await params;
+    const blog = await getBlogBySlug(slug);
+
+    if(!blog){
+        return{
+            title:"Blog Not Found",
+            description:"The Requested Article Could not be Found",
+            robots:{
+                index:false,
+                follow:false
+            },
+        };  
+    }
+   
+      const title = blog.title||"Blogify";
+      const description = blog.excerpt||blog.description.slice(0,150)||"Blogify, explore blogs";
+      const canonicalUrl = `/blogs/${slug}`
+
+      return{
+        title,
+        description,
+        alternates:{
+            canonical:canonicalUrl
+        },
+        openGraph:{
+            type:'article',
+            title,
+            description,
+            url:canonicalUrl,
+            images:blog.image?[{
+                url:blog.image,
+                alt:blog.title,
+            }]:[]
+        },
+        twitter:{
+            card:"summary_large_image",
+            title,
+            description,
+            url:canonicalUrl,
+            images:blog.image?[blog.image]:[]
+        }
+      }
+ 
+
+}
 
 export default async function BlogPage({ params }) {
     const { slug } = await params;
     const blog = await getBlogBySlug(slug)
 
-    if (!blog) return <h1>No tfound log</h1>
+    if (!blog) return <h1>Not found log</h1>
 
     return (
         <>
@@ -17,7 +63,7 @@ export default async function BlogPage({ params }) {
                     <Badge className="text-indigo-700 bg-indigo-100">
                         {blog.category}
                     </Badge>
-                    <h1 className="text-4xl md:text-5xl leading-relaxed font-bold">{blog.title}</h1>
+                    <h1 className="text-2xl md:text-3xl lg:text-5xl  leading-relaxed font-bold">{blog.title}</h1>
 
                     <div className="flex gap-3 text-sm mb-2.5 text-muted-foreground">
                         <span>{blog.author}</span>
@@ -30,7 +76,7 @@ export default async function BlogPage({ params }) {
                         alt={blog.title}
                         width={900}
                         height={500}
-                        className="w-full object-cover rounded-md h-100" />
+                        className="w-full object-cover rounded-md h-96" />
 
                     <div className="my-3">
                         <ReactMarkDown>

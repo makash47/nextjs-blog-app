@@ -1,8 +1,15 @@
+// import Categories from "@/components/Categories"
 
+export const metadata = {
+  title:"Categories",
+  description:"Discover Blogs related to web, devops, programming"
+}
 
 const CategoriesPage = () => {
   return (
-    <div>CategoriesPage</div>
+   <>
+   {/* <Categories/> */}
+   </>
   )
 }
 

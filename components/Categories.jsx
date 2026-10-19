@@ -1,7 +1,7 @@
 import { getCategories } from "@/lib/data"
 import Link from "next/link";
 
-async function Categories() {
+export async function Categories() {
     const categories = await getCategories();
     return (
          <section className="w-full py-10">
@@ -23,7 +23,7 @@ async function Categories() {
     </section>
     )
 }
-export default Categories
+// export default Categories
 
 
 

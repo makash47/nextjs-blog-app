@@ -2,6 +2,12 @@
 import { getPaginatedBlogs } from "@/lib/data";
 import BlogCard from "@/components/BlogCard";
 import Link from "next/link";
+
+export const metadata = {
+  title:"Blogs",
+  description:"Browse all Blogify blogs related to programming, web dev , databases."
+}
+
 export default async function BlogsPage({ searchParams }) {
   const params = await searchParams;
 
