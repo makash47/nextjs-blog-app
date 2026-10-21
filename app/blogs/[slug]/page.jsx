@@ -72,14 +72,14 @@ export default async function BlogPage({ params }) {
         <>
             <article className="w-full">
                 <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-                <div className="max-w-4xl mx-auto px-6 py-10">
+               type="application/ld+json"
+               dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+             />
+                <div className="max-w-4xl mx-auto px-6 py-10 bg-gray-200 dark:bg-gray-800">
                     <Badge className="text-indigo-700 bg-indigo-100">
                         {blog.category}
                     </Badge>
-                    <h1 className="text-2xl md:text-3xl lg:text-5xl  leading-relaxed font-bold">{blog.title}</h1>
+                    <h1 className="text-2xl md:text-3xl lg:text-5xl leading-relaxed font-bold font-heading">{blog.title}</h1>
 
                     <div className="flex gap-3 text-sm mb-2.5 text-muted-foreground">
                         <span>{blog.author}</span>

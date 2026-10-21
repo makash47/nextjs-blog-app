@@ -1,6 +1,4 @@
 import { BookOpen, Lightbulb, PenLine } from "lucide-react";
-import Link from "next/link";
-
 const features = [
   {
     icon: BookOpen,
@@ -28,13 +26,12 @@ export default function WhyBlogify() {
       <div className="mx-auto max-w-6xl px-6">
 
         <div className="mb-10">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Why Blogify?
+          <h2 className="uppercase text-indigo-600 mb-2 text-sm">
+            Why Blogify
           </h2>
 
-          <p className="mt-3 text-muted-foreground">
-            A place to learn, explore, and share knowledge through
-            meaningful articles.
+          <p className="text-3xl md:text-4xl text-primary font-bold font-heading">
+            A place to learn, explore, and share knowledge.
           </p>
         </div>
 
@@ -51,7 +48,7 @@ export default function WhyBlogify() {
                   <Icon className="h-7 w-7" />
                 </div>
 
-                <h3 className="text-xl font-semibold">
+                <h3 className="text-xl font-semibold font-heading">
                   {feature.title}
                 </h3>
 
@@ -62,16 +59,6 @@ export default function WhyBlogify() {
             );
           })}
         </div>
-
-        <div className="mt-10 text-center">
-          <Link
-            href="/blogs"
-            className="inline-flex rounded-lg bg-indigo-600 px-6 py-3 font-medium text-white transition-colors hover:bg-indigo-700"
-          >
-            Explore Blogs
-          </Link>
-        </div>
-
       </div>
     </section>
   );

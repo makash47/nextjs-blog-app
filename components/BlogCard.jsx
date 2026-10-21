@@ -8,11 +8,12 @@ import {
 import Image from "next/image"
 import Link from "next/link"
 import { Badge } from "./ui/badge"
+import { ArrowUpLeft, ArrowUpRight } from "lucide-react"
 
 const BlogCard = ({ blog }) => {
     return (
-
-        <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5">
+        <Link href={`/blogs/${blog.slug}`} className="">
+        <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5">
             <Image
                 // src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400"
                 src={blog.image}
@@ -23,19 +24,19 @@ const BlogCard = ({ blog }) => {
             />
             <CardHeader>
                 <Badge className="bg-indigo-100 text-indigo-700">{blog.category}</Badge>
-                <CardTitle className="text-xl hover:text-indigo-600 transition line-clamp-1 font-bold">{blog.title}</CardTitle>
+                <CardTitle className="text-xl hover:text-indigo-600 transition line-clamp-1 font-bold font-heading">{blog.title}</CardTitle>
             </CardHeader>
             <CardContent className="text-sm line-clamp-3">
               <p>{blog.content}</p>
 
             </CardContent>
-            <CardFooter>
-                <Link className="font-medium hover:underline hover:text-indigo-600"
-                 href={`/blogs/${blog.slug}`}>Read More →</Link>
+            <CardFooter className="text-indigo-600 group-hover:-translate-y-2 transition-transform duration-300">
+                Read More <ArrowUpRight/>
             </CardFooter>
         </Card>
-
+</Link>
     )
 }
 
 export default BlogCard
+

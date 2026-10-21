@@ -3,6 +3,7 @@ import Link from "next/link";
 import {
   Mail,
   MapPin,
+  Sparkle,
 } from "lucide-react";
 import {
   FaGithub,
@@ -68,18 +69,13 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="w-full">
+    <main className="w-full py-10 md:py:16">
 
-      <section className="border-b">
-        <div className="mx-auto max-w-6xl px-6 py-10 text-center">
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Contact Us
-          </h1>
-
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Have a question, suggestion, or feedback?
-            We&apos;d love to hear from you.
-          </p>
+      <section className="border-b pb-6">
+         <div className="text-center space-y-3">
+          <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-600 rounded-full px-3 text-sm py-1 text-indigo-700 dark:bg-indigo-950/50"><Sparkle height={15}/>We'd love to hear from you</div>
+          <h1 className="text-primary text-4xl font-bold font-heading">Lets Start a <span className="text-indigo-600">Conversation</span></h1>
+          <p className="font-sans text-lg text-gray-600 dark:text-gray-400">Have a question, story idea, or feedback about an article? Drop us a message.</p>
         </div>
       </section>
 
