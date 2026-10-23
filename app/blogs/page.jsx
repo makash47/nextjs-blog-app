@@ -9,15 +9,32 @@ export const metadata = {
   description: "Browse all Blogify blogs related to programming, web dev , databases."
 }
 
+
 export default async function BlogsPage({ searchParams }) {
   const params = await searchParams;
-
   const page = Number(params?.page) || 1;
-
   const { blogs, totalPages } = await getPaginatedBlogs(page, 8);
+
+
+  const baseUrl = process.env.SITE_URL||"http://localhost:3000";
+const blogsPageSchema = {
+  "@context":"https:schema.org",
+  "@type":"CollectionPage",
+  name:"Blogify Articles",
+  description:"Explore articles, tutorials, and insights on web development, React, Next.js, JavaScript, and more.",
+    url:
+    page > 1
+      ? `${baseUrl}/blogs?page=${page}`
+      : `${baseUrl}/blogs`,
+}
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-10">
+      <script type="application/ld+json"
+      dangerouslySetInnerHTML={{
+    __html: JSON.stringify(blogsPageSchema).replace(
+      /</g,"\\u003c"),}}
+/>
 
       <div className="text-center space-y-3">
         <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-600 rounded-full px-3 text-sm py-1 text-indigo-700 dark:bg-indigo-950/50"><Sparkle height={15} />The Blogify Journal</div>

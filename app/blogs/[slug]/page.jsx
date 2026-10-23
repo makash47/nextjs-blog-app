@@ -56,7 +56,7 @@ export default async function BlogPage({ params }) {
     if (!blog) return <h1>Not found log</h1>
     const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Blog POST',
+    '@type': 'Article',
     headline: blog.title,
     description: blog.excerpt,
     image: blog.image,

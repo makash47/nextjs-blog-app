@@ -31,8 +31,8 @@ const MobileMenu = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="absolute left-0 top-16 w-full bg-white border-t shadow-md">
-          <ul className="flex flex-col gap-4 p-6 text-zinc-700">
+        <div className="absolute left-0 top-16 w-full bg-white/90 dark:bg-gray-900/90 border-t shadow-md transition-transform duration-300">
+          <ul className="flex flex-col gap-4 items-center p-6 text-primary">
 
             <li>
               <Navlink href="/">

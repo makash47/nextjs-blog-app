@@ -2,11 +2,25 @@ import { getCategories } from "@/lib/data"
 import { ArrowLeft, ArrowRight, BookOpen, FolderOpen, Sparkle } from "lucide-react"
 import Link from "next/link";
 
+const categoriesSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Blogify Categories",
+  description:
+    "Browse Blogify categories and discover articles grouped by topic.",
+  url: `${process.env.SITE_URL || "http://localhost:3000"}/categories`,
+};
 
 const CategoriesPage = async() => {
   const categories = await getCategories();
   return (
     <section className="w-full py-10 lg:py-15">
+      <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify(categoriesSchema).replace(/</g, "\\u003c"),
+  }}
+/>
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center space-y-3">
           <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-600 rounded-full px-3 text-sm py-1 text-indigo-700 dark:bg-indigo-950/50"><Sparkle height={15}/> Curated Topics</div>
